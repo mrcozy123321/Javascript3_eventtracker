@@ -2,7 +2,9 @@ import React from 'react'
 
 const SingleEventView = () => {
   return (
-    <div>SingleEventView</div>
+    <div>
+      
+    </div>
   )
 }
 

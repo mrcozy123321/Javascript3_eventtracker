@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Event 1",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quod saepe odio eum? Modi optio accusantium natus? Impedit adipisci voluptatibus quasi est, fugit deserunt rem perferendis atque eveniet officiis cum in commodi nisi mollitia blanditiis eos dolores pariatur, odio obcaecati at quae perspiciatis alias sit velit? Facilis quibusdam reprehenderit sint?",
+      "createdAt": "",
+      "timeRemaining": "",
+    },
+    {
+      "id": 2,
+      "title": "Event 2",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quod saepe odio eum? Modi optio accusantium natus? Impedit adipisci voluptatibus quasi est, fugit deserunt rem perferendis atque eveniet officiis cum in commodi nisi mollitia blanditiis eos dolores pariatur, odio obcaecati at quae perspiciatis alias sit velit? Facilis quibusdam reprehenderit sint?",
+      "createdAt": "",
+      "timeRemaining": "",
+    }
+  ]
+}

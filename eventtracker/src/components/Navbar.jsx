@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div>
+      
+    </div>
   )
 }
 
