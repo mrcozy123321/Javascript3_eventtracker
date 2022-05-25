@@ -22,7 +22,7 @@ body {
 
 .container {
   padding-inline: 3rem;
-  width: 100%;
+  width: 80%;
   max-width: 78rem;
   margin: 0 auto;
 }
@@ -44,6 +44,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-block: 1.5rem;
+  width: 80%;
+  margin: auto;
 }
 
 .nav-link {
