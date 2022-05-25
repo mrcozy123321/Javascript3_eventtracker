@@ -14,5 +14,13 @@
       "createdAt": "",
       "timeRemaining": "",
     }
+  ],
+  "users": [
+    {
+      "id": "1a",
+      "email": "Daniel@mail.com",
+      "name": "Daniel",
+      "password": "Bytmig123"
+    }
   ]
 }

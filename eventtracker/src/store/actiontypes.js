@@ -1,5 +1,6 @@
 const actiontypes = () => {
   return {
+    auth: {},
     events: {
       setEvents: 'SET_EVENTS',
       setEventsLoading: 'SET_EVENTS_LOADING',
