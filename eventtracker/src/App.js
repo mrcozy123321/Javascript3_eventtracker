@@ -14,6 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(getEvents())
   })
+  
   return (
     <div className="App">
       <Navbar />
