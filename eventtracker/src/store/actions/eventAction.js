@@ -5,7 +5,7 @@ export const getEventById = id => {
   return async dispatch => {
     dispatch(loadEventStart())
     try {
-      const res = await axios.get('http://localhost:8080/events/' + id)
+      const res = await axios.get(`http://localhost:8080/events?userId=${userId}` + id)
       dispatch(loadEventSuccess(res.data))
     }
     catch (err) {

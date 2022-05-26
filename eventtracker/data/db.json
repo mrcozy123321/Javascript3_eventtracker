@@ -2,24 +2,56 @@
   "events": [
     {
       "id": 1,
-      "title": "Event 1",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quod saepe odio eum? Modi optio accusantium natus? Impedit adipisci voluptatibus quasi est, fugit deserunt rem perferendis atque eveniet officiis cum in commodi nisi mollitia blanditiis eos dolores pariatur, odio obcaecati at quae perspiciatis alias sit velit? Facilis quibusdam reprehenderit sint?",
+      "userId": 1,
+      "title": "Bla bla bla hej",
+      "body": "Bla bla bla hej Bla bla bla hej",
       "createdAt": "",
-      "timeRemaining": "",
+      "timeRemaining": ""
     },
     {
       "id": 2,
-      "title": "Event 2",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quod saepe odio eum? Modi optio accusantium natus? Impedit adipisci voluptatibus quasi est, fugit deserunt rem perferendis atque eveniet officiis cum in commodi nisi mollitia blanditiis eos dolores pariatur, odio obcaecati at quae perspiciatis alias sit velit? Facilis quibusdam reprehenderit sint?",
+      "userId": 1,
+      "title": "Bla tjo tjo hej",
+      "body": "Bla tjo tjo hej Bla tjo tjo hej",
       "createdAt": "",
-      "timeRemaining": "",
+      "timeRemaining": ""
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Bla tjo tjo hej",
+      "body": "Bla tjo tjo hej Bla tjo tjo hej",
+      "createdAt": "",
+      "timeRemaining": ""
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "title": "Bla tjo tjo hej",
+      "body": "Bla tjo tjo hej Bla tjo tjo hej",
+      "createdAt": "",
+      "timeRemaining": ""
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "title": "Bla bla bla hej",
+      "body": "Bla bla bla hej Bla bla bla hej",
+      "createdAt": "",
+      "timeRemaining": ""
     }
   ],
   "users": [
     {
-      "id": "1a",
+      "id": 1,
       "email": "Daniel@mail.com",
       "name": "Daniel",
+      "password": "Bytmig123"
+    },
+    {
+      "id": 2,
+      "email": "Daniel@mail.com",
+      "name": "Sebbe",
       "password": "Bytmig123"
     }
   ]

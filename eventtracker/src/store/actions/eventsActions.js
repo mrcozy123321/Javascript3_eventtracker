@@ -1,11 +1,25 @@
 import actiontypes from '../actiontypes';
 import axios from 'axios';
 
+export const getData = async (path, params) => {
+  return async dispatch => {
+    try {
+      const urlParams = new URLSearchParams(params).toString()
+      const res = await axios.get(`http://localhost:8080/${path}?${urlParams}`)
+      return res
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+}
+
 export const getEvents = () => {
   return async dispatch => {
     dispatch(setEventsLoading(true))
     try {
-      const res = await axios.get('http://localhost:8080/events')
+      // const res = await axios.get(`http://localhost:8080/events?userId=${userId}`)
+      const res = await getData('events')
       dispatch(setEvents(res.data))
     }
     catch (err) {
@@ -13,6 +27,23 @@ export const getEvents = () => {
     }
   }
 }
+
+export const getUserEvents = (userId) => {
+  return async dispatch => {
+    dispatch(setEventsLoading(true))
+    try {
+      // const res = await axios.get(`http://localhost:8080/events?userId=${userId}`)
+      const res = await getData('events', {
+        'userId': userId,
+      })
+      dispatch(setEvents(res.data))
+    }
+    catch (err) {
+      dispatch(setEventsFailure(err.message))
+    }
+  }
+}
+
 
 export const addEvent = event => {
   return async dispatch => {
