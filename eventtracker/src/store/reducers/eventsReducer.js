@@ -8,13 +8,13 @@ const initState = {
 
 const eventsReducer = (state = initState, action) => {
   switch(action.type) {
-    case actiontypes().events.setEventsLoading:
+    case actiontypes().events.getEvents:
       return {
         ...state,
         loading: action.payload
       }
 
-    case actiontypes().events.setEvents:
+    case actiontypes().events.getEventsSuccess:
       return {
         ...state,
         data: action.payload,
@@ -22,7 +22,7 @@ const eventsReducer = (state = initState, action) => {
         error: null
       }
 
-    case actiontypes().events.setEventsFailure:
+    case actiontypes().events.getEventsFailure:
       return {
         ...state,
         error: action.payload

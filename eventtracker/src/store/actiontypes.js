@@ -2,9 +2,9 @@ const actiontypes = () => {
   return {
     auth: {},
     events: {
-      setEvents: 'SET_EVENTS',
-      setEventsLoading: 'SET_EVENTS_LOADING',
-      setEventsFailure: 'SET_EVENTS_FAILURE',
+      getEvents: 'GET_EVENTS',
+      getEventsSuccess: 'GET_EVENTS_SUCCESS',
+      getEventsFailure: 'GET_EVENTS_FAILURE',
       createNewEvent: 'CREATE_NEW_EVENT'
     },
     event: {
