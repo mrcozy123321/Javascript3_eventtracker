@@ -16,6 +16,7 @@ const eventsReducer = (state = initState, action) => {
 
     case actiontypes().events.setEvents:
       return {
+        ...state,
         data: action.payload,
         loading: false,
         error: null

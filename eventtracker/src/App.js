@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Views from './views/Views';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getEvents } from './store/actions/eventsActions';
+import { getUserEvents } from './store/actions/eventsActions';
 
 
 
@@ -12,8 +12,8 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getEvents())
-  })
+    dispatch(getUserEvents())
+  }, [dispatch])
   
   return (
     <div className="App">

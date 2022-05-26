@@ -4,12 +4,16 @@ import Event from '../components/events/Event'
 
 const EventsView = () => {
 
-  const { data, loading } = useSelector(state => state.events)
+  const { error, data, loading } = useSelector(state => state.event)
+  
   return (
-    <div>
+    <>
       { loading && <p>Loading...</p> }
-      { data.map(event => <Event key={event.id} event={event} />) }
-    </div>
+      { error && <p>error</p> }
+      <div>
+        { data.map(event => <Event key={event.id} event={event} />) }
+      </div>
+    </>
   )
 }
 
