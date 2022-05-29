@@ -15,8 +15,9 @@ const SingleEventView = () => {
   }, [events, id])
 
   return (
-    <div>
-      <p>{event?.body}</p>
+    <div className='container'>
+      <h1 className='event-title'>{event?.title}</h1>
+      <p className='event-body'>{event?.body}</p>
     </div>
   )
 }

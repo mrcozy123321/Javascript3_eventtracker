@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { addEvent } from '../store/actions/eventsActions';
 
 const AddEventView = () => {
+
+  const dispatch = useDispatch();
 
   const [eventData, setEventData] = useState({
     title: '',
@@ -18,6 +21,11 @@ const AddEventView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addEvent({
+      title: eventData.title,
+      body: eventData.body,
+      timeRemaining: eventData.timeRemaining
+    }))
   };
 
   return (

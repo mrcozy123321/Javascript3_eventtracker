@@ -38,10 +38,10 @@ export const getUserEvents = (userId) => {
     })
     try {
       const res = await axios.get(`http://localhost:8080/events?userId=${userId}`)
-        const futureEvents = res.data.filter(event => event.timeRemaining > Date.now())
-        const pastEvents = res.data.filter(event => event.timeRemaining < Date.now())
-        dispatch(getEventsSuccess(futureEvents))
-        dispatch(getPastEventsSuccess(pastEvents))
+        // const futureEvents = res.data.filter(event => event.timeRemaining > Date.now())
+        // const pastEvents = res.data.filter(event => event.timeRemaining < Date.now())
+        dispatch(getEventsSuccess(res.data))
+        // dispatch(getPastEventsSuccess(pastEvents))
     }
     catch (err) {
       dispatch(getEventsFailure(err.message))

@@ -140,3 +140,8 @@ body {
   text-align: center;
   margin-top: 2rem;
 }
+
+.event-title {
+  text-align: center;
+  margin-block: 2rem;
+}

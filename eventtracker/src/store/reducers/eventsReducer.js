@@ -4,7 +4,7 @@ const initState = {
   data: [],
   loading: false,
   error: null,
-  pastEvents: []
+  // pastEvents: []
 }
 
 const eventsReducer = (state = initState, action) => {
@@ -18,24 +18,24 @@ const eventsReducer = (state = initState, action) => {
     case actiontypes().events.getEventsSuccess:
       return {
         ...state,
-        data: action.payload.sort((a, b) => a.timeRemaining - b.timeRemaining),
+        data: action.payload,
         loading: false,
         error: null
       }
-
+// .sort((a, b) => a.timeRemaining - b.timeRemaining)
     case actiontypes().events.getEventsFailure:
       return {
         ...state,
         error: action.payload
       }
 
-    case actiontypes().events.getPastEventsSuccess:
-      return {
-        ...state,
-        pastEvents: action.payload.sort((a, b) => a.timeRemaining - b.timeRemaining),
-        loading: false,
-        error: null
-      }
+    // case actiontypes().events.getPastEventsSuccess:
+    //   return {
+    //     ...state,
+    //     pastEvents: action.payload.sort((a, b) => a.timeRemaining - b.timeRemaining),
+    //     loading: false,
+    //     error: null
+    //   }
 
     case actiontypes().events.createNewEvent:
       return {
