@@ -1,5 +1,6 @@
 import axios from 'axios';
 import actiontypes from '../actiontypes';
+import jwt_decode from 'jwt-decode'
 
 const apiCall = (url, user, dispatch) => {
   axios.post(url, user)
@@ -17,24 +18,35 @@ export const registerUser = (user) => {
 
 export const loginUser = (user) => {
   return dispatch => {
-    apiCall('http://localhost:8080/users/login', user, dispatch)
+    apiCall('http://localhost:8080/login', user, dispatch)
   }
 }
 
 export const checkAuth = () => {
   return async dispatch => {
-    // if(email && password !== user.email && user.password){
-    //   throw new Error('Email and password does not match any user')
-    // }
-    // else {
-      const res = await dispatch(getUserInfo(id))
-      const userInfo = {
-        id: res.user.id,
-        email: res.user.email,
-        name: res.user.name,
+    const token = localStorage.getItem('token')
+
+    if(token){
+
+      const decode = jwt_decode(token);
+
+      if(decode.exp * 1000 < new Date().getTime()) {
+        console.log('Token Expired')
+        localStorage.removeItem('token')
       }
-      dispatch(authSuccess(userInfo))
-    // }
+      else {
+        const res = await dispatch(getUserInfo(decode.sub, token))
+        const userInfo = {
+          accessToken: token,
+          user: {
+            id: res.id,
+            email: res.email,
+            name: res.name,      
+          }
+        }
+        dispatch(authSuccess(userInfo)) 
+      }
+    }
   }
 }
 
@@ -46,8 +58,8 @@ export const logout = () => {
 
 const getUserInfo = (id) => {
   return async () => {
-    const res = await axios.get(`http://localhost:8080/users/${id}`)
-    return res.data
+    const res = await axios.get(`http://localhost:8080/users?id=${id}`)
+    return res.data[0]
   }
 }
 

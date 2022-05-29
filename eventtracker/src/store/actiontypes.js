@@ -4,7 +4,8 @@ const actiontypes = () => {
       getEvents: 'GET_EVENTS',
       getEventsSuccess: 'GET_EVENTS_SUCCESS',
       getEventsFailure: 'GET_EVENTS_FAILURE',
-      createNewEvent: 'CREATE_NEW_EVENT'
+      createNewEvent: 'CREATE_NEW_EVENT',
+      getPastEventsSuccess: 'GET_PAST_EVENTS_SUCCESS'
     },
     event: {
       getSingleEvent: 'GET_SINGLE_EVENT',

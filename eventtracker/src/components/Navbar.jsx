@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = () => {
 
-  const [isAuth, setIsAuth] = useState(true)
+  const { token } = useSelector(state => state.auth)
 
   return (
     <div className='navbar'>
@@ -16,7 +16,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-brand">LOGO</Link>
         </div>
         <div className='navbar__links'>
-          { isAuth
+          { token
           ? <NavLink to="/addevent" className="nav-link" >Add Event</NavLink> 
           : <NavLink to="/login" className="nav-link" >Login</NavLink>
           }

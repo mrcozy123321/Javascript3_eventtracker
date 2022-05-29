@@ -10,9 +10,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-In the data directory (data folder), you can open a terminal and run:
+In the data directory (eventtracker folder), you can open a terminal and run:
 
-### `json-server --watch db.json --port 8080`
+### `json-server --watch ./data/db.json -m ./node_modules/json-server-auth --port 8080`
 
 Runs the server.
 Open [http://localhost:8080](http://localhost:8080) to view it in your browser.

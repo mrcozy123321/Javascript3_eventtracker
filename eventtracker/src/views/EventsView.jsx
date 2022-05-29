@@ -5,14 +5,14 @@ import Event from '../components/events/Event'
 const EventsView = () => {
   
 
-  const { error, data: events, loading } = useSelector(state => state.eventsReducer)
+  const { error, data: events, loading } = useSelector(state => state.events)
   
   return (
     <>
       { loading && <p>Loading...</p> }
       { error && <p>error</p> }
       <div>
-        { events?.map(event => (<Event key={event._id} event={event} />)) }
+        { events?.map(event => (<Event key={event.id} event={event} />)) }
       </div>
     </>
   )

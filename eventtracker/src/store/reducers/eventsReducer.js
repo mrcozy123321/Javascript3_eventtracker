@@ -3,7 +3,8 @@ import actiontypes from "../actiontypes";
 const initState = {
   data: [],
   loading: false,
-  error: null
+  error: null,
+  pastEvents: []
 }
 
 const eventsReducer = (state = initState, action) => {
@@ -17,7 +18,7 @@ const eventsReducer = (state = initState, action) => {
     case actiontypes().events.getEventsSuccess:
       return {
         ...state,
-        data: action.payload,
+        data: action.payload.sort((a, b) => a.timeRemaining - b.timeRemaining),
         loading: false,
         error: null
       }
@@ -26,6 +27,14 @@ const eventsReducer = (state = initState, action) => {
       return {
         ...state,
         error: action.payload
+      }
+
+    case actiontypes().events.getPastEventsSuccess:
+      return {
+        ...state,
+        pastEvents: action.payload.sort((a, b) => a.timeRemaining - b.timeRemaining),
+        loading: false,
+        error: null
       }
 
     case actiontypes().events.createNewEvent:

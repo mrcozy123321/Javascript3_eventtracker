@@ -5,7 +5,7 @@ import { loginUser } from '../store/actions/authorizeActions'
 
 const LoginView = () => {
 
-  const { loading, error, userId } = useSelector(state => state.authReducer)
+  const { loading, error, userId } = useSelector(state => state.auth)
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
 

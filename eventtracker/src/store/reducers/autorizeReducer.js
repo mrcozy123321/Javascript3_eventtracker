@@ -5,7 +5,8 @@ const initState = {
   loading: false,
   userId: null,
   email: null,
-  name: null
+  name: null,
+  token: null
 }
 
 const authReducer = (state = initState, action) => {
@@ -17,12 +18,15 @@ const authReducer = (state = initState, action) => {
       }
 
     case actiontypes().auth.authorizeSuccess:
+      localStorage.setItem('token', action.payload.accessToken)
+      console.log(action.payload)
       return {
         ...state,
         loading: false,
-        userId: action.payload.id,
-        email: action.payload.email,
-        name: action.payload.name
+        userId: action.payload.user.id,
+        email: action.payload.user.email,
+        name: action.payload.user.name,
+        token: action.payload.accessToken
       }
 
     case actiontypes().auth.authorizeFailure:
@@ -33,6 +37,7 @@ const authReducer = (state = initState, action) => {
       }
 
     case actiontypes().auth.logout:
+      localStorage.removeItem('token')
       return {
         ...initState
       }

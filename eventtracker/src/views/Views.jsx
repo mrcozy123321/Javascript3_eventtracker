@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUserEvents } from '../store/actions/eventsActions';
 import { checkAuth } from '../store/actions/authorizeActions';
 
@@ -14,11 +14,16 @@ import RegisterView from './RegisterView'
 const Views = () => {
 
   const dispatch = useDispatch()
+  const { userId } = useSelector(state => state.auth)
 
   useEffect(() => {
-    dispatch(getUserEvents())
     dispatch(checkAuth())
   }, [dispatch])
+  
+  useEffect(() => {
+    dispatch(getUserEvents(userId))
+  }, [dispatch, userId])
+
 
   return (
     <Routes>

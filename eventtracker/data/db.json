@@ -5,7 +5,6 @@
       "userId": 1,
       "title": "Bla bla bla hej",
       "body": "Bla bla bla hej Bla bla bla hej",
-      "createdAt": "",
       "timeRemaining": ""
     },
     {
@@ -13,7 +12,6 @@
       "userId": 1,
       "title": "Bla tjo tjo hej",
       "body": "Bla tjo tjo hej Bla tjo tjo hej",
-      "createdAt": "",
       "timeRemaining": ""
     },
     {
@@ -21,7 +19,6 @@
       "userId": 2,
       "title": "Bla tjo tjo hej",
       "body": "Bla tjo tjo hej Bla tjo tjo hej",
-      "createdAt": "",
       "timeRemaining": ""
     },
     {
@@ -43,16 +40,16 @@
   ],
   "users": [
     {
-      "id": 1,
-      "email": "Daniel@mail.com",
-      "name": "Daniel",
-      "password": "Bytmig123"
+      "email": "Sebbe@mail.com",
+      "password": "$2a$10$gKyhf/nXt.f2SxsY7A0hqO62l6Hg.yEi82/mSOAfP1dVrJkHTtBlu",
+      "name": "Sebbe",
+      "id": 1
     },
     {
-      "id": 2,
       "email": "Daniel@mail.com",
-      "name": "Sebbe",
-      "password": "Bytmig123"
+      "password": "$2a$10$EzYqi/Ylbo0XX0k7SVdmzugtJmw0EEvPcw0.FPpkgHWwEXEFa.YUe",
+      "name": "Daniel",
+      "id": 2
     }
   ]
 }
