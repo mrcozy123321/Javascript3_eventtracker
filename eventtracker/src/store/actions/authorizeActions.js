@@ -23,10 +23,10 @@ export const loginUser = (user) => {
 
 export const checkAuth = () => {
   return async dispatch => {
-    if(email && password !== user.email && user.password){
-      throw new Error('Email and password does not match any user')
-    }
-    else {
+    // if(email && password !== user.email && user.password){
+    //   throw new Error('Email and password does not match any user')
+    // }
+    // else {
       const res = await dispatch(getUserInfo(id))
       const userInfo = {
         id: res.user.id,
@@ -34,7 +34,7 @@ export const checkAuth = () => {
         name: res.user.name,
       }
       dispatch(authSuccess(userInfo))
-    }
+    // }
   }
 }
 

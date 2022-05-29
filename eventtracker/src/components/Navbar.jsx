@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Navbar = () => {
 
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(true)
 
   return (
     <div className='navbar'>

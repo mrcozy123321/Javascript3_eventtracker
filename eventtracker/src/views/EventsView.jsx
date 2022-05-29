@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux'
 import Event from '../components/events/Event'
 
 const EventsView = () => {
+  
 
-  const { error, data, loading } = useSelector(state => state.event)
+  const { error, data: events, loading } = useSelector(state => state.eventsReducer)
   
   return (
     <>
       { loading && <p>Loading...</p> }
       { error && <p>error</p> }
       <div>
-
-        { data?.map(event => <Event key={event.id} event={event} />) }
+        { events?.map(event => (<Event key={event._id} event={event} />)) }
       </div>
     </>
   )
