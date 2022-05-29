@@ -5,36 +5,36 @@ import { addEvent } from '../store/actions/eventsActions';
 const AddEventView = () => {
 
   const dispatch = useDispatch();
+  const { userId } = useSelector(state => state.auth)
 
-  const [eventData, setEventData] = useState({
+  const [inputValues, setInputValues] = useState({
     title: '',
     body: '',
     timeRemaining: ''
   })
 
-  const onChange = e => {
-    setEventData(state => ({
-      ...state,
-      [e.target.name]: e.target.value
-    }))
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setInputValues({ ...inputValues, [name]: value})
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addEvent({
-      title: eventData.title,
-      body: eventData.body,
-      timeRemaining: eventData.timeRemaining
+      title: inputValues.title,
+      body: inputValues.body,
+      timeRemaining: inputValues.timeRemaining,
+      userId: userId
     }))
   };
 
   return (
     <div className='from-container'>
-      <form className='form-control' onSubmit={handleSubmit}>
-        <input type="text" className='text-control' name="title" placeholder='Title' id='title' onChange={onChange} value={eventData.title} />
-        <textarea className='textarea-control' name="body" placeholder='Write something...' id="body" onChange={onChange} value={eventData.body}></textarea>
+      <form className='form-control' method='POST' action='/addevent' onSubmit={handleSubmit}>
+        <input type="text" className='text-control' name="title" placeholder='Title' id='title' onChange={(e) => handleChange(e)} value={inputValues.title} />
+        <textarea className='textarea-control' name="body" placeholder='Write something...' id="body" onChange={(e) => handleChange(e)} value={inputValues.body}></textarea>
         <div className='form-wrap'>
-          <input type="dateTime-local" className='date-control' name='timeRemaining' id='timeRemaining' onChange={onChange} value={eventData.timeRemaining}/>
+          <input type="dateTime-local" className='date-control' name='timeRemaining' id='timeRemaining' onChange={(e) => handleChange(e)} value={inputValues.timeRemaining}/>
         </div>
 
         <button className='btn btn-primary'>Create Event</button>

@@ -54,7 +54,7 @@ export const addEvent = event => {
   return async dispatch => {
     // dispatch(getEvents(true))
     try {
-      const res = await axios.get('http://localhost:8080/events', event)
+      const res = await axios.post('http://localhost:8080/events', event)
       dispatch(addToList(res.data))
     }
     catch (err) {

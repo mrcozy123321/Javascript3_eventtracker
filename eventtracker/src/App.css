@@ -145,3 +145,8 @@ body {
   text-align: center;
   margin-block: 2rem;
 }
+
+.event-time {
+  margin-top: 2rem;
+  text-align: end;
+}
