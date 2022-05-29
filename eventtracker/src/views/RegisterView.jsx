@@ -20,18 +20,14 @@ const RegisterView = () => {
 
   const dispatch = useDispatch();
 
-  function handleChange(event) {
-    const { name, value } = event.target;
+  function handleChange(e) {
+    const { name, value } = e.target;
     setInputValues({ ...inputValues, [name]: value})
   }
 
-  const checkValidation = () => {
+  const checkNameValidation = () => {
     let errors = validation;
-    const regEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const cond1 = "/^(?=.*[a-z]).{6,20}$/";
-    const cond2 = "/^(?=.*[A-Z]).{6,20}$/";
-    const cond3 = "/^(?=.*[0-9]).{6,20}$/";
-    const password = inputValues.password;
+    let regEx = /^[A-Za-z\'\s\.\,]+$/;
 
     if(!inputValues.name.trim()) {
       errors.name = "Name is required"
@@ -39,9 +35,19 @@ const RegisterView = () => {
     else if(inputValues.name.length < 2) {
       errors.name = "Name needs to be at least 2 letters"
     }
+    else if(!regEx){
+      errors.name = "Name can't have special characters"
+    }
     else {
       errors.name = ""
     }
+
+    setValidation(errors);
+  }
+
+  const checkEmailValidation = () => {
+    let errors = validation;
+    const regEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if(!inputValues.email.trim()) {
       errors.email = "Email is required"
@@ -50,6 +56,17 @@ const RegisterView = () => {
     } else {
       errors.email = "";
     }
+
+    setValidation(errors);
+  }
+
+  const checkPasswordValidation = () => {
+    let errors = validation;
+
+    const cond1 = "/^(?=.*[a-z]).{6,20}$/";
+    const cond2 = "/^(?=.*[A-Z]).{6,20}$/";
+    const cond3 = "/^(?=.*[0-9]).{6,20}$/";
+    const password = inputValues.password;
 
     if (!password) {
       errors.password = "password is required";
@@ -65,41 +82,55 @@ const RegisterView = () => {
       errors.password = "Password must contain at least a number";
     } else {
       errors.password = "";
-    }
-
+    }    
+    
     if (!inputValues.confirmPassword) {
       errors.confirmPassword = "Password confirmation is required";
-    } else if (inputValues.confirmPassword !== inputValues.password) {
+    } else if (inputValues.confirmPassword !== password) {
       errors.confirmPassword = "Password does not match confirmation password";
     } else {
-      errors.password = "";
+      errors.confirmPassword = "";
     }
 
     setValidation(errors);
-  };
+  }
 
   useEffect(() => {
-    checkValidation();
-  }, [inputValues]);
+    inputValues.name.length > 0 &&  checkNameValidation();
+  }, [inputValues.name]);
+
+  useEffect(() => {
+    inputValues.email.length > 0 &&  checkEmailValidation();
+  }, [inputValues.email]);
+
+  useEffect(() => {
+    inputValues.password.length > 0 && inputValues.confirmPassword.length > 0 && checkPasswordValidation();
+  }, [inputValues.password, inputValues.confirmPassword]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser({
-      name: inputValues.name,
-      email: inputValues.email,
-      password: inputValues.password
-    }))
+    if(validation.name === '' && validation.email === '' && validation.password === '') {
+      dispatch(registerUser({
+        name: inputValues.name,
+        email: inputValues.email,
+        password: inputValues.password
+      }))
+    }
   }
   
   return (
     <div className='container'>
       <div>
         <form className='form-control' action='/register' onSubmit={handleSubmit} method="POST">
+        {validation.name && <p>{validation.name}</p>}
+        {validation.email && <p>{validation.email}</p>}
+        {validation.password && <p>{validation.password}</p>}
+        {validation.confirmPassword && <p>{validation.confirmPassword}</p>}
           <label htmlFor="name" className='text-control'>Name:</label>
-          <input type="text" name="name" id="name" className='text-control' onChange={(e) => handleChange(e)} value={inputValues.name} />
+          <input type="text" name="name" id="name" className='text-control' onChange={(e) => handleChange(e)} value={inputValues.name} required/>
 
           <label htmlFor="email" className='text-control'>Email:</label>
-          <input type="email" name="email" id="email" className='text-control' onChange={(e) => handleChange(e)} value={inputValues.email}/>
+          <input type="email" name="email" id="email" className='text-control' onChange={(e) => handleChange(e)} value={inputValues.email} required/>
 
           <label htmlFor="password" className='text-control'>Password:</label>
           <input type="password" name="password" id="password" className='text-control' onChange={(e) => handleChange(e)} value={inputValues.password} required/>
