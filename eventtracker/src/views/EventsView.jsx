@@ -12,7 +12,7 @@ const EventsView = () => {
       { loading && <p>Loading...</p> }
       { error && <p>error</p> }
       <div>
-        { events?.map(event => (<Event key={event.id} event={event} />)) }
+        { events.map(event => (<Event key={event.id} event={event} />)) }
       </div>
     </>
   )

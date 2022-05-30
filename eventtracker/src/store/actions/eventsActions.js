@@ -90,10 +90,3 @@ const getEventsFailure = payload => {
     payload
   }
 }
-
-const getPastEventsSuccess = events => {
-  return {
-    type: actiontypes().events.getPastEventsSuccess,
-    payload: events
-  }
-}
